@@ -194,16 +194,6 @@ function App() {
               )
             )}
 
-            <Field label="Rubrica de evaluacion">
-              <textarea
-                className="input min-h-32"
-                value={form.criteriaText}
-                onChange={(event) => setForm({ ...form, criteriaText: event.target.value })}
-                placeholder="Pega aqui la rubrica oficial o deja los criterios base precargados."
-                required
-              />
-            </Field>
-
             <Field label="Archivo de entrega">
               <input
                 className="input file:mr-4 file:rounded-md file:border-0 file:bg-pmcd-blue file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white"

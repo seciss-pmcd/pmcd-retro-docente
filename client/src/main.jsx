@@ -62,7 +62,7 @@ function App() {
     setForm({
       ...form,
       activity: activityId,
-      criteriaText: rubric ? rubric.criteria.map((criterion) => `- ${criterion}`).join("\n") : ""
+      criteriaText: rubric ? formatRubric(rubric.criteria) : ""
     });
   }
 
@@ -226,3 +226,12 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />);
+
+function formatRubric(criteria) {
+  return criteria
+    .map((criterion, index) => {
+      const [title, levels] = criterion.split(" Niveles: ");
+      return `${index + 1}. ${title}\nNiveles: ${levels || "Por definir."}`;
+    })
+    .join("\n\n");
+}

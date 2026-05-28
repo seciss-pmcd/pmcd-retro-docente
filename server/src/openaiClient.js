@@ -40,7 +40,7 @@ export async function generateFeedback(input) {
         role: "user",
         content: JSON.stringify({
           instrucciones:
-            "Devuelve JSON con las llaves strengths, criteriaCompliance, improvements y finalSuggestion. Mantente breve, academico y respetuoso. La retroalimentacion final debe mencionar fortalezas y mejoras prioritarias.",
+            "Devuelve JSON con las llaves strengths, criteriaCompliance, improvements y finalSuggestion. Usa la rubrica y sus niveles de desempeno como referencia para identificar evidencias, fortalezas y mejoras. No asignes calificacion numerica ni color. No inventes cumplimiento si no hay evidencia. Mantente breve, academico y respetuoso. La retroalimentacion final debe mencionar fortalezas y mejoras prioritarias.",
           profesor: input.professorName,
           curso: input.course,
           actividad: input.activityName,

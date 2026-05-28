@@ -3,6 +3,74 @@
     "id": "planeacion-didactica",
     "name": "Planeacion didactica",
     "rubricText": "Hoja de presentación: nombre de quien elabora, curso, título de la actividad, tutor y fecha\nCarece de los elementos solicitados\nContiene 1 de las características requeridas\nContiene 2 de las características requeridas\nContiene 3 de las características requeridas\nContiene 4 de las características requeridas\nContiene todas las características requeridas\n\nGuardado y envío: el archivo fue enviado con el nombre que se pide dentro de las instrucciones y enviado en formato: Word, Power Point o PDF\nCarece de los elementos solicitados\nEl archivo fue guardado con un nombre y formato diferente al que se pide dentro de las instrucciones\nEl archivo fue enviado con el nombre que se pide dentro de las instrucciones pero con un formato incorrecto\nEl archivo fue enviado con un nombre diferente al que se pide dentro de las instrucciones con el formato correcto\nContiene todas la características requeridas\n\nLa actividad se elaboró conforme a: la lectura proporcionada, siguió las instrucciones de la actividad, demuestra profundidad acerca del tema y usó parafraseo\nCarece de los elementos solicitados\nContiene 1 de las características requeridas\nContiene 2 de las características requeridas\nContiene 3 de las características requeridas\nContiene todas las características requeridas\n\nRecurso didáctico\nCarece de los elementos solicitados\nNo utiliza ningún recurso didáctico\nUtiliza un recurso didáctico diferente al requerido dentro de la actividad\nUtiliza el recurso didáctico requerido sin seguir los lineamientos para realizarlo\nUtiliza el recurso didáctico solicitado siguiendo los lineamientos para realizarlo\n\nCaracterísticas de la actividad: buena presentación, ordenada, clara y visualmente atractiva\nCarece de los elementos solicitados\nContiene 1 de las características requeridas\nContiene 2 de las características requeridas\nContiene 3 de las características requeridas\nContiene todas las características requeridas\n\nLa actividad integra los elementos de respaldo: bibliografía principal, bibliografía complementaria y citas (formato APA)\nNo integra bibliografía principal, complementaria ni citas\nIntegra bibliografías sin formato APA\nIntegra bibliografía principal en formato APA\nIntegra bibliografía principal y complementaria en formato APA\nIntegra bibliografía principal y complementaria en formato APA y citas",
+    "table": [
+      {
+        "criterion": "Hoja de presentación: nombre de quien elabora, curso, título de la actividad, tutor y fecha",
+        "levels": [
+          "Carece de los elementos solicitados",
+          "Contiene 1 de las características requeridas",
+          "Contiene 2 de las características requeridas",
+          "Contiene 3 de las características requeridas",
+          "Contiene 4 de las características requeridas",
+          "Contiene todas las características requeridas"
+        ]
+      },
+      {
+        "criterion": "Guardado y envío: el archivo fue enviado con el nombre que se pide dentro de las instrucciones y enviado en formato: Word, Power Point o PDF",
+        "levels": [
+          "Carece de los elementos solicitados",
+          "El archivo fue guardado con un nombre y formato diferente al que se pide dentro de las instrucciones",
+          "El archivo fue enviado con el nombre que se pide dentro de las instrucciones pero con un formato incorrecto",
+          "El archivo fue enviado con un nombre diferente al que se pide dentro de las instrucciones con el formato correcto",
+          "Contiene todas la características requeridas",
+          ""
+        ]
+      },
+      {
+        "criterion": "La actividad se elaboró conforme a: la lectura proporcionada, siguió las instrucciones de la actividad, demuestra profundidad acerca del tema y usó parafraseo",
+        "levels": [
+          "Carece de los elementos solicitados",
+          "Contiene 1 de las características requeridas",
+          "Contiene 2 de las características requeridas",
+          "Contiene 3 de las características requeridas",
+          "Contiene todas las características requeridas",
+          ""
+        ]
+      },
+      {
+        "criterion": "Recurso didáctico",
+        "levels": [
+          "Carece de los elementos solicitados",
+          "No utiliza ningún recurso didáctico",
+          "Utiliza un recurso didáctico diferente al requerido dentro de la actividad",
+          "Utiliza el recurso didáctico requerido sin seguir los lineamientos para realizarlo",
+          "Utiliza el recurso didáctico solicitado siguiendo los lineamientos para realizarlo",
+          ""
+        ]
+      },
+      {
+        "criterion": "Características de la actividad: buena presentación, ordenada, clara y visualmente atractiva",
+        "levels": [
+          "Carece de los elementos solicitados",
+          "Contiene 1 de las características requeridas",
+          "Contiene 2 de las características requeridas",
+          "Contiene 3 de las características requeridas",
+          "Contiene todas las características requeridas",
+          ""
+        ]
+      },
+      {
+        "criterion": "La actividad integra los elementos de respaldo: bibliografía principal, bibliografía complementaria y citas (formato APA)",
+        "levels": [
+          "No integra bibliografía principal, complementaria ni citas",
+          "Integra bibliografías sin formato APA",
+          "Integra bibliografía principal en formato APA",
+          "Integra bibliografía principal y complementaria en formato APA",
+          "Integra bibliografía principal y complementaria en formato APA y citas",
+          ""
+        ]
+      }
+    ],
     "criteria": [
       "Hoja de presentacion: nombre de quien elabora, curso, titulo de la actividad, tutor y fecha. Niveles: carece de los elementos solicitados; contiene 1 de las caracteristicas requeridas; contiene 2 de las caracteristicas requeridas; contiene 3 de las caracteristicas requeridas; contiene 4 de las caracteristicas requeridas; contiene todas las caracteristicas requeridas.",
       "Guardado y envio: el archivo fue enviado con el nombre que se pide dentro de las instrucciones y enviado en formato Word, Power Point o PDF. Niveles: carece de los elementos solicitados; el archivo fue guardado con un nombre y formato diferente al que se pide dentro de las instrucciones; el archivo fue enviado con el nombre que se pide dentro de las instrucciones pero con un formato incorrecto; el archivo fue enviado con un nombre diferente al que se pide dentro de las instrucciones con el formato correcto; contiene todas las caracteristicas requeridas.",

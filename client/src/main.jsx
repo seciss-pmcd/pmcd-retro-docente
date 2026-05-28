@@ -36,6 +36,39 @@ function FeedbackBlock({ title, children }) {
   );
 }
 
+function RubricTable({ rows }) {
+  if (!rows?.length) return null;
+
+  return (
+    <div className="rounded-md border border-slate-200 bg-white">
+      <div className="border-b border-slate-200 px-4 py-3">
+        <h3 className="font-bold text-pmcd-blue">Rúbrica de evaluación</h3>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="min-w-[980px] table-fixed border-collapse text-sm">
+          <tbody>
+            {rows.map((row, rowIndex) => (
+              <tr key={row.criterion} className="align-top">
+                <th className="w-[42%] border-b border-r border-slate-200 bg-slate-50 px-3 py-3 text-left font-semibold leading-6 text-pmcd-ink">
+                  {row.criterion}
+                </th>
+                {row.levels.map((level, levelIndex) => (
+                  <td
+                    key={`${row.criterion}-${levelIndex}`}
+                    className="w-[9.66%] border-b border-r border-slate-200 px-2 py-3 leading-6 text-slate-700"
+                  >
+                    {level || <span className="text-slate-300">No aplica</span>}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [rubrics, setRubrics] = useState([]);
   const [form, setForm] = useState(initialForm);
@@ -144,17 +177,21 @@ function App() {
             </Field>
 
             {selectedRubric && (
-              <div className="rounded-md bg-pmcd-blueSoft p-4">
-                <h3 className="font-bold text-pmcd-blue">Criterios base de la actividad</h3>
-                <ul className="mt-2 grid gap-2 text-sm text-slate-700">
-                  {selectedRubric.criteria.map((criterion) => (
-                    <li key={criterion} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-pmcd-gold" />
-                      <span>{criterion}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              selectedRubric.table ? (
+                <RubricTable rows={selectedRubric.table} />
+              ) : (
+                <div className="rounded-md bg-pmcd-blueSoft p-4">
+                  <h3 className="font-bold text-pmcd-blue">Criterios base de la actividad</h3>
+                  <ul className="mt-2 grid gap-2 text-sm text-slate-700">
+                    {selectedRubric.criteria.map((criterion) => (
+                      <li key={criterion} className="flex gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-pmcd-gold" />
+                        <span>{criterion}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
             )}
 
             <Field label="Rubrica de evaluacion">

@@ -5,14 +5,14 @@ App web para revisar entregas docentes del PMCD en modalidad intermedia, analiza
 ## Que incluye
 
 - Carga de entregas en DOCX, PDF, PPTX, TXT/MD o texto directo.
+- Selector de curso con las opciones del piloto PMCD.
 - Selector de actividad: Planeacion didactica, ABP, MBE, APROC, Instrumentos de evaluacion y Profesionalismo medico.
-- Rubricas institucionales iniciales en `server/data/rubrics.json`.
+- Campo editable para pegar la rubrica oficial de evaluacion.
+- Criterios base iniciales en `server/data/rubrics.json`.
 - Generacion de retroalimentacion con OpenAI API.
 - Modo demo si no existe `OPENAI_API_KEY`.
-- Campos de profesor, curso, grupo, actividad, criterios, retroalimentacion y estado.
-- Estados: `pendiente`, `revisada`, `aprobada`.
+- Campos de profesor, curso, actividad, rubrica, entrega y retroalimentacion.
 - Edicion de la sugerencia final antes de copiar.
-- Historial local en `server/data/history.json`.
 - Sin conexion directa a Moodle y sin publicacion automatica.
 
 ## Requisitos
@@ -64,16 +64,17 @@ http://localhost:4000
 
 ## Flujo de uso
 
-1. Captura el nombre del profesor, curso y grupo.
-2. Selecciona el tipo de actividad.
-3. Revisa los criterios de evaluacion que aparecen en pantalla.
-4. Carga el archivo exportado de Moodle o pega el texto de la entrega.
-5. Presiona `Generar retroalimentacion`.
-6. Revisa fortalezas, cumplimiento, ajustes y sugerencia final.
-7. Edita la retroalimentacion final si hace falta.
-8. Presiona `Copiar retroalimentacion final`.
-9. Pega manualmente el texto en Moodle.
-10. Cambia el estado a `revisada` o `aprobada` cuando corresponda.
+1. Captura el nombre del profesor.
+2. Selecciona el curso.
+3. Selecciona el tipo de actividad.
+4. Revisa los criterios base precargados.
+5. Pega o ajusta la rubrica oficial en el campo `Rubrica de evaluacion`.
+6. Carga el archivo exportado de Moodle o pega el texto de la entrega.
+7. Presiona `Generar retroalimentacion`.
+8. Revisa fortalezas, cumplimiento de la rubrica, mejoras y sugerencia final.
+9. Edita la retroalimentacion final si hace falta.
+10. Presiona `Copiar retroalimentacion final`.
+11. Pega manualmente el texto en Moodle.
 
 ## Ejemplo de rubrica JSON
 
@@ -100,16 +101,13 @@ server/data/rubrics.json
 - La app no guarda contrasenas de Moodle.
 - La app no publica retroalimentacion automaticamente.
 - Los archivos cargados se eliminan despues de extraer el texto.
-- El historial local guarda metadatos y retroalimentacion, no conserva el archivo original.
+- La version de prueba no guarda historial.
 - Evita subir datos sensibles innecesarios en las entregas.
 
 ## API principal
 
 - `GET /api/rubrics`: devuelve rubricas.
-- `GET /api/history`: devuelve historial local.
 - `POST /api/feedback`: genera retroalimentacion desde archivo o texto.
-- `PATCH /api/history/:id/status`: actualiza estado.
-- `PATCH /api/history/:id/final-text`: guarda la version editada de la retroalimentacion final.
 
 ## Prompt base usado
 

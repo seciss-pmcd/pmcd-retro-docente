@@ -8,7 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractTextFromFile } from "./extractText.js";
 import { generateFeedback } from "./openaiClient.js";
-import { readHistory, readRubrics, saveFeedback, updateFeedbackFinalText, updateFeedbackStatus } from "./storage.js";
+import { readRubrics } from "./storage.js";
 
 const app = express();
 const port = Number(process.env.PORT || 4000);
@@ -36,14 +36,6 @@ app.get("/api/rubrics", async (_req, res, next) => {
   }
 });
 
-app.get("/api/history", async (_req, res, next) => {
-  try {
-    res.json(await readHistory());
-  } catch (error) {
-    next(error);
-  }
-});
-
 app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
   try {
     const rubrics = await readRubrics();
@@ -64,9 +56,8 @@ app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
     const feedback = await generateFeedback({
       professorName: req.body.professorName,
       course: req.body.course,
-      group: req.body.group,
       activityName: rubric.name,
-      criteria: rubric.criteria,
+      criteria: splitCriteria(req.body.criteriaText || rubric.criteria.join("\n")),
       submissionText
     });
 
@@ -74,55 +65,20 @@ app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
       id: randomUUID(),
       professorName: req.body.professorName || "",
       course: req.body.course || "",
-      group: req.body.group || "",
       activity: rubric.name,
       activityId: rubric.id,
-      criteria: rubric.criteria,
+      criteria: splitCriteria(req.body.criteriaText || rubric.criteria.join("\n")),
       fileName: req.file?.originalname || "",
       feedback,
       finalText: feedback.finalSuggestion || "",
-      status: "pendiente",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
-
-    await saveFeedback(record);
 
     if (req.file) await fs.rm(req.file.path, { force: true });
     res.status(201).json(record);
   } catch (error) {
     if (req.file) await fs.rm(req.file.path, { force: true }).catch(() => {});
-    next(error);
-  }
-});
-
-app.patch("/api/history/:id/status", async (req, res, next) => {
-  try {
-    const allowed = new Set(["pendiente", "revisada", "aprobada"]);
-    if (!allowed.has(req.body.status)) {
-      res.status(400).json({ message: "Estado no valido." });
-      return;
-    }
-    const record = await updateFeedbackStatus(req.params.id, req.body.status);
-    if (!record) {
-      res.status(404).json({ message: "Registro no encontrado." });
-      return;
-    }
-    res.json(record);
-  } catch (error) {
-    next(error);
-  }
-});
-
-app.patch("/api/history/:id/final-text", async (req, res, next) => {
-  try {
-    const record = await updateFeedbackFinalText(req.params.id, req.body.finalText || "");
-    if (!record) {
-      res.status(404).json({ message: "Registro no encontrado." });
-      return;
-    }
-    res.json(record);
-  } catch (error) {
     next(error);
   }
 });
@@ -140,3 +96,10 @@ app.use((error, _req, res, _next) => {
 app.listen(port, () => {
   console.log(`PMCD Retro Docente disponible en http://localhost:${port}`);
 });
+
+function splitCriteria(criteriaText) {
+  return criteriaText
+    .split(/\n|;/)
+    .map((item) => item.replace(/^[-*\d.)\s]+/, "").trim())
+    .filter(Boolean);
+}

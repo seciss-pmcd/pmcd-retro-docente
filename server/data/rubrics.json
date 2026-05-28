@@ -2,6 +2,7 @@
   {
     "id": "planeacion-didactica",
     "name": "Planeacion didactica",
+    "instructions": "Evaluar la entrega considerando la rúbrica institucional y las instrucciones específicas de la actividad. La retroalimentación debe identificar evidencias observables, fortalezas y mejoras prioritarias sin asignar calificación numérica.",
     "rubricText": "Hoja de presentación: nombre de quien elabora, curso, título de la actividad, tutor y fecha\nCarece de los elementos solicitados\nContiene 1 de las características requeridas\nContiene 2 de las características requeridas\nContiene 3 de las características requeridas\nContiene 4 de las características requeridas\nContiene todas las características requeridas\n\nGuardado y envío: el archivo fue enviado con el nombre que se pide dentro de las instrucciones y enviado en formato: Word, Power Point o PDF\nCarece de los elementos solicitados\nEl archivo fue guardado con un nombre y formato diferente al que se pide dentro de las instrucciones\nEl archivo fue enviado con el nombre que se pide dentro de las instrucciones pero con un formato incorrecto\nEl archivo fue enviado con un nombre diferente al que se pide dentro de las instrucciones con el formato correcto\nContiene todas la características requeridas\n\nLa actividad se elaboró conforme a: la lectura proporcionada, siguió las instrucciones de la actividad, demuestra profundidad acerca del tema y usó parafraseo\nCarece de los elementos solicitados\nContiene 1 de las características requeridas\nContiene 2 de las características requeridas\nContiene 3 de las características requeridas\nContiene todas las características requeridas\n\nRecurso didáctico\nCarece de los elementos solicitados\nNo utiliza ningún recurso didáctico\nUtiliza un recurso didáctico diferente al requerido dentro de la actividad\nUtiliza el recurso didáctico requerido sin seguir los lineamientos para realizarlo\nUtiliza el recurso didáctico solicitado siguiendo los lineamientos para realizarlo\n\nCaracterísticas de la actividad: buena presentación, ordenada, clara y visualmente atractiva\nCarece de los elementos solicitados\nContiene 1 de las características requeridas\nContiene 2 de las características requeridas\nContiene 3 de las características requeridas\nContiene todas las características requeridas\n\nLa actividad integra los elementos de respaldo: bibliografía principal, bibliografía complementaria y citas (formato APA)\nNo integra bibliografía principal, complementaria ni citas\nIntegra bibliografías sin formato APA\nIntegra bibliografía principal en formato APA\nIntegra bibliografía principal y complementaria en formato APA\nIntegra bibliografía principal y complementaria en formato APA y citas",
     "table": [
       {
@@ -83,6 +84,7 @@
   {
     "id": "abp",
     "name": "ABP",
+    "instructions": "",
     "criteria": [
       "Problema autentico, retador y vinculado con la practica medica.",
       "Preguntas detonadoras que promueven razonamiento clinico y aprendizaje autodirigido.",
@@ -94,6 +96,7 @@
   {
     "id": "mbe",
     "name": "MBE",
+    "instructions": "",
     "criteria": [
       "Pregunta clinica estructurada con formato PICO u otro pertinente.",
       "Busqueda y seleccion critica de evidencia actual y confiable.",
@@ -105,6 +108,7 @@
   {
     "id": "aproc",
     "name": "APROC",
+    "instructions": "",
     "criteria": [
       "Actividad procedimental con desempenos observables y progresivos.",
       "Indicaciones claras de preparacion, ejecucion y cierre.",
@@ -116,6 +120,7 @@
   {
     "id": "instrumentos-evaluacion",
     "name": "Instrumentos de evaluacion",
+    "instructions": "",
     "criteria": [
       "Criterios e indicadores alineados con competencias y resultados de aprendizaje.",
       "Niveles de desempeno observables, diferenciados y comprensibles.",
@@ -127,6 +132,7 @@
   {
     "id": "profesionalismo-medico",
     "name": "Profesionalismo medico",
+    "instructions": "",
     "criteria": [
       "Promueve responsabilidad, etica, empatia y respeto.",
       "Incluye situaciones o evidencias relacionadas con la practica profesional.",

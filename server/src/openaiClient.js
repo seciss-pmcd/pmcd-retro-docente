@@ -58,6 +58,7 @@ export async function generateFeedback(input) {
           profesor: input.professorName,
           curso: input.course,
           actividad: input.activityName,
+          instrucciones_especificas_de_la_actividad: input.activityInstructions || "Sin instrucciones especificas precargadas.",
           rubrica: input.rubricText || input.criteria,
           entrega: input.submissionText.slice(0, 16000)
         })

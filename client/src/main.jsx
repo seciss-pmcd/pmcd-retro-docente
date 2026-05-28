@@ -47,7 +47,7 @@ function RubricTable({ rows }) {
       <div className="overflow-x-auto">
         <table className="min-w-[980px] table-fixed border-collapse text-sm">
           <tbody>
-            {rows.map((row, rowIndex) => (
+            {rows.map((row) => (
               <tr key={row.criterion} className="align-top">
                 <th className="w-[42%] border-b border-r border-slate-200 bg-slate-50 px-3 py-3 text-left font-semibold leading-6 text-pmcd-ink">
                   {row.criterion}
@@ -65,6 +65,22 @@ function RubricTable({ rows }) {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+function CriteriaList({ criteria }) {
+  return (
+    <div className="rounded-md bg-pmcd-blueSoft p-4">
+      <h3 className="font-bold text-pmcd-blue">Criterios base de la actividad</h3>
+      <ul className="mt-2 grid gap-2 text-sm text-slate-700">
+        {criteria.map((criterion) => (
+          <li key={criterion} className="flex gap-2">
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-pmcd-gold" />
+            <span>{criterion}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -145,7 +161,7 @@ function App() {
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-7xl gap-6 px-6 py-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mx-auto grid max-w-7xl gap-6 px-6 py-6">
         <section className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
           <div className="mb-5 flex items-center gap-2 text-pmcd-blue">
             <FileText className="h-5 w-5" />
@@ -153,7 +169,7 @@ function App() {
           </div>
 
           <form className="grid gap-4" onSubmit={handleSubmit}>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 lg:grid-cols-3">
               <Field label="Nombre del profesor">
                 <input className="input" value={form.professorName} onChange={(event) => setForm({ ...form, professorName: event.target.value })} required />
               </Field>
@@ -165,61 +181,58 @@ function App() {
                   ))}
                 </select>
               </Field>
+              <Field label="Actividad">
+                <select className="input" value={form.activity} onChange={(event) => updateActivity(event.target.value)} required>
+                  <option value="">Selecciona tipo de actividad</option>
+                  {rubrics.map((rubric) => (
+                    <option key={rubric.id} value={rubric.id}>{rubric.name}</option>
+                  ))}
+                </select>
+              </Field>
             </div>
 
-            <Field label="Actividad">
-              <select className="input" value={form.activity} onChange={(event) => updateActivity(event.target.value)} required>
-                <option value="">Selecciona tipo de actividad</option>
-                {rubrics.map((rubric) => (
-                  <option key={rubric.id} value={rubric.id}>{rubric.name}</option>
-                ))}
-              </select>
-            </Field>
+            <div className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr_auto] lg:items-end">
+              <Field label="Archivo de entrega">
+                <input
+                  className="input file:mr-4 file:rounded-md file:border-0 file:bg-pmcd-blue file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white"
+                  type="file"
+                  accept=".docx,.pdf,.pptx,.txt,.md"
+                  onChange={(event) => setFile(event.target.files?.[0] || null)}
+                />
+              </Field>
 
-            {selectedRubric && (
-              selectedRubric.table ? (
-                <RubricTable rows={selectedRubric.table} />
-              ) : (
-                <div className="rounded-md bg-pmcd-blueSoft p-4">
-                  <h3 className="font-bold text-pmcd-blue">Criterios base de la actividad</h3>
-                  <ul className="mt-2 grid gap-2 text-sm text-slate-700">
-                    {selectedRubric.criteria.map((criterion) => (
-                      <li key={criterion} className="flex gap-2">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-pmcd-gold" />
-                        <span>{criterion}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            )}
+              <Field label="Texto de entrega">
+                <textarea
+                  className="input min-h-28"
+                  value={form.submissionText}
+                  onChange={(event) => setForm({ ...form, submissionText: event.target.value })}
+                  placeholder="Pega aqui la entrega exportada de Moodle si no usaras archivo."
+                />
+              </Field>
 
-            <Field label="Archivo de entrega">
-              <input
-                className="input file:mr-4 file:rounded-md file:border-0 file:bg-pmcd-blue file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white"
-                type="file"
-                accept=".docx,.pdf,.pptx,.txt,.md"
-                onChange={(event) => setFile(event.target.files?.[0] || null)}
-              />
-            </Field>
-
-            <Field label="Texto de entrega">
-              <textarea
-                className="input min-h-40"
-                value={form.submissionText}
-                onChange={(event) => setForm({ ...form, submissionText: event.target.value })}
-                placeholder="Pega aqui la entrega exportada de Moodle si no usaras archivo."
-              />
-            </Field>
-
-            <button className="btn-primary" type="submit" disabled={loading}>
-              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <FileText className="h-5 w-5" />}
-              Generar retroalimentacion
-            </button>
+              <button className="btn-primary lg:mb-0" type="submit" disabled={loading}>
+                {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <FileText className="h-5 w-5" />}
+                Generar retroalimentacion
+              </button>
+            </div>
           </form>
         </section>
 
-        <section className="grid content-start gap-6">
+        <section className="grid gap-6 xl:grid-cols-2">
+          <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+            {selectedRubric ? (
+              selectedRubric.table ? (
+                <RubricTable rows={selectedRubric.table} />
+              ) : (
+                <CriteriaList criteria={selectedRubric.criteria} />
+              )
+            ) : (
+              <div className="rounded-md bg-slate-50 p-6 text-sm leading-6 text-slate-600">
+                Selecciona una actividad para ver la rúbrica correspondiente.
+              </div>
+            )}
+          </div>
+
           <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-4 text-xl font-bold text-pmcd-blue">Retroalimentacion generada</h2>
 
@@ -244,9 +257,9 @@ function App() {
               </div>
             )}
           </div>
-
-          {message && <div className="rounded-md border border-pmcd-gold/40 bg-pmcd-goldSoft px-4 py-3 text-sm font-semibold">{message}</div>}
         </section>
+
+        {message && <div className="rounded-md border border-pmcd-gold/40 bg-pmcd-goldSoft px-4 py-3 text-sm font-semibold">{message}</div>}
       </div>
     </main>
   );

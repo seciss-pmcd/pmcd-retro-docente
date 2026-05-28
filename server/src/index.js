@@ -60,6 +60,7 @@ app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
       activityName: rubric.name,
       criteria: splitCriteria(criteriaText),
       rubricText: criteriaText,
+      activityInstructions: rubric.instructions || "",
       submissionText
     });
 
@@ -69,6 +70,7 @@ app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
       course: req.body.course || "",
       activity: rubric.name,
       activityId: rubric.id,
+      activityInstructions: rubric.instructions || "",
       criteria: splitCriteria(criteriaText),
       fileName: req.file?.originalname || "",
       feedback,

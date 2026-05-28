@@ -1,0 +1,9 @@
+node_modules
+.npm-cache
+dist
+.env
+server/uploads/*
+!server/uploads/.gitkeep
+server/data/history.json
+*.log
+.DS_Store

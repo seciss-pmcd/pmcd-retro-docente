@@ -1,0 +1,68 @@
+[
+  {
+    "id": "planeacion-didactica",
+    "name": "Planeacion didactica",
+    "criteria": [
+      "Alineacion entre competencias, resultados de aprendizaje, contenidos y evaluacion.",
+      "Secuencia didactica clara con inicio, desarrollo, cierre y tiempos estimados.",
+      "Estrategias activas pertinentes para educacion medica.",
+      "Evidencia de evaluacion coherente con los aprendizajes esperados.",
+      "Adecuacion al nivel, modalidad intermedia y contexto del grupo."
+    ]
+  },
+  {
+    "id": "abp",
+    "name": "ABP",
+    "criteria": [
+      "Problema autentico, retador y vinculado con la practica medica.",
+      "Preguntas detonadoras que promueven razonamiento clinico y aprendizaje autodirigido.",
+      "Roles, productos y momentos de seguimiento definidos.",
+      "Criterios de evaluacion claros para proceso y producto.",
+      "Integracion de colaboracion, reflexion y fuentes academicas."
+    ]
+  },
+  {
+    "id": "mbe",
+    "name": "MBE",
+    "criteria": [
+      "Pregunta clinica estructurada con formato PICO u otro pertinente.",
+      "Busqueda y seleccion critica de evidencia actual y confiable.",
+      "Analisis de validez, relevancia y aplicabilidad.",
+      "Integracion entre evidencia, experiencia clinica y contexto del paciente.",
+      "Conclusiones claras para la toma de decisiones."
+    ]
+  },
+  {
+    "id": "aproc",
+    "name": "APROC",
+    "criteria": [
+      "Actividad procedimental con desempenos observables y progresivos.",
+      "Indicaciones claras de preparacion, ejecucion y cierre.",
+      "Seguridad del paciente, comunicacion y profesionalismo integrados.",
+      "Instrumento de observacion o lista de cotejo pertinente.",
+      "Retroalimentacion formativa prevista durante la practica."
+    ]
+  },
+  {
+    "id": "instrumentos-evaluacion",
+    "name": "Instrumentos de evaluacion",
+    "criteria": [
+      "Criterios e indicadores alineados con competencias y resultados de aprendizaje.",
+      "Niveles de desempeno observables, diferenciados y comprensibles.",
+      "Instrucciones claras para evaluador y estudiante.",
+      "Validez de contenido y pertinencia para la actividad.",
+      "Uso formativo de resultados y retroalimentacion."
+    ]
+  },
+  {
+    "id": "profesionalismo-medico",
+    "name": "Profesionalismo medico",
+    "criteria": [
+      "Promueve responsabilidad, etica, empatia y respeto.",
+      "Incluye situaciones o evidencias relacionadas con la practica profesional.",
+      "Favorece reflexion sobre conducta, comunicacion y toma de decisiones.",
+      "Establece criterios claros para valorar desempenos profesionales.",
+      "Cuida el lenguaje academico, incluyente y centrado en la persona."
+    ]
+  }
+]

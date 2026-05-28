@@ -3,10 +3,11 @@ import OpenAI from "openai";
 const basePrompt =
   "Actua como especialista en educacion medica, evaluacion docente y diseno curricular. Analiza la entrega del profesor con base en la rubrica proporcionada. Genera retroalimentacion clara, respetuosa, academica y util, centrada en fortalezas y mejoras. No inventes informacion. Si falta evidencia, indicalo. La respuesta debe ser breve, personalizada y lista para pegar en Moodle.";
 
-function fallbackFeedback({ professorName, course, activityName, criteria, submissionText }) {
+function fallbackFeedback({ professorName, course, activityName, criteria, rubricText, submissionText }) {
   const hasEvidence = submissionText && submissionText.trim().length > 80;
-  const addressed = criteria.slice(0, 3).map((criterion) => `- ${criterion}: evidencia parcial o por confirmar.`);
-  const missing = criteria.slice(3).map((criterion) => `- ${criterion}: conviene reforzar o hacer mas explicita la evidencia.`);
+  const rubricLines = rubricText ? rubricText.split("\n").filter(Boolean) : criteria;
+  const addressed = rubricLines.slice(0, 3).map((criterion) => `- ${criterion}: evidencia parcial o por confirmar.`);
+  const missing = rubricLines.slice(3, 6).map((criterion) => `- ${criterion}: conviene reforzar o hacer mas explicita la evidencia.`);
 
   return {
     strengths: hasEvidence
@@ -44,7 +45,7 @@ export async function generateFeedback(input) {
           profesor: input.professorName,
           curso: input.course,
           actividad: input.activityName,
-          rubrica: input.criteria,
+          rubrica: input.rubricText || input.criteria,
           entrega: input.submissionText.slice(0, 16000)
         })
       }

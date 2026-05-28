@@ -62,7 +62,7 @@ function App() {
     setForm({
       ...form,
       activity: activityId,
-      criteriaText: rubric ? formatRubric(rubric.criteria) : ""
+      criteriaText: rubric ? rubric.rubricText || formatRubric(rubric.criteria) : ""
     });
   }
 

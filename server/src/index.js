@@ -53,11 +53,13 @@ app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
       return;
     }
 
+    const criteriaText = req.body.criteriaText || rubric.rubricText || rubric.criteria.join("\n");
     const feedback = await generateFeedback({
       professorName: req.body.professorName,
       course: req.body.course,
       activityName: rubric.name,
-      criteria: splitCriteria(req.body.criteriaText || rubric.criteria.join("\n")),
+      criteria: splitCriteria(criteriaText),
+      rubricText: criteriaText,
       submissionText
     });
 
@@ -67,7 +69,7 @@ app.post("/api/feedback", upload.single("file"), async (req, res, next) => {
       course: req.body.course || "",
       activity: rubric.name,
       activityId: rubric.id,
-      criteria: splitCriteria(req.body.criteriaText || rubric.criteria.join("\n")),
+      criteria: splitCriteria(criteriaText),
       fileName: req.file?.originalname || "",
       feedback,
       finalText: feedback.finalSuggestion || "",
